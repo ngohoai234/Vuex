@@ -9,6 +9,23 @@ const store = createStore({
       counter: 0,
     };
   },
+  mutations: {
+    increment(state, payload) {
+      state.counter += payload.value;
+    },
+  },
+  actions: {
+    increment(context, payload) {
+      setTimeout(() => {
+        context.commit('increment', payload);
+      }, 1000);
+    },
+  },
+  getters: {
+    finalCounter(state) {
+      return state.counter * 2;
+    },
+  },
 });
 
 const app = createApp(App);
